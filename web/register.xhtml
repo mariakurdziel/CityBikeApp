@@ -40,9 +40,9 @@
 
             <div class="collapse navbar-collapse" id="navbar-collapse-2">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Strona główna</a></li>
-                    <li><a href="#">Regulamin</a></li>
-                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="index.xhtml">Strona główna</a></li>
+                    <li><a href="regulamin.xhtml">Regulamin</a></li>
+                    <li><a href="kontakt.xhtml">Kontakt</a></li>
                 </ul>
             </div>
         </div>
@@ -54,7 +54,7 @@
         <br/>
         <br/>
         <br/>
-        <div class = "text2">  <h3> Sign in to rent a bike </h3></div>
+        <div class = "text2">  <h3>Zarejestruj się </h3></div>
         <div  class="registration" style="width: 400px">
             <p:panel>
                 <f:facet name="header">Login</f:facet>
@@ -65,26 +65,26 @@
                 </h:panelGrid>
                 <br/>
                 <h:panelGrid columns="1">
-                    Login <h:inputText id="login" value="#{register.username}" required="true" label="login"
+                    Login: <h:inputText id="login" value="#{register.username}" required="true" label="login"
                                              style="#{ component.valid ? '' : 'border-color:red;'}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="1">
-                    Password: <h:inputSecret id="password" value="#{register.password}" required="true" label="password"
+                    Hasło: <h:inputSecret id="password" value="#{register.password}" required="true" label="password"
                                              style="#{ component.valid ? '' : 'border-color:red;'}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="1">
-                    Name: <h:inputText id="name" value="#{register.name}" required="true" label="name"
+                    Imię: <h:inputText id="name" value="#{register.name}" required="true" label="name"
                                              style="#{ component.valid ? '' : 'border-color:red;'}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="1">
-                    Surname: <h:inputText id="surname" value="#{register.surname}" required="true" label="surname"
+                    Nazwisko: <h:inputText id="surname" value="#{register.surname}" required="true" label="surname"
                                          style="#{ component.valid ? '' : 'border-color:red;'}"/>
                 </h:panelGrid>
                 <div  class="button2" style="width: 400px">
                     <br/>
                     <br/>
                     <br/>
-                    <h:commandButton  id="btn" value="Sign in"  action="#{register.addUser}" class="btn btn-success"/>
+                    <h:commandButton  id="btn" value="Zarejestruj się"  action="#{register.addUser}" class="btn btn-success"/>
                 </div>
             </p:panel>
         </div>

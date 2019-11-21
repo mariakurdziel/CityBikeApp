@@ -23,7 +23,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
 </h:head>
 <h:body>
-    <p:growl id="msgs" showDetail="true" />
+
     <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default">
         <div class="container">
@@ -49,33 +49,43 @@
     </nav>
 
     <h:form>
+
+        <p:growl autoUpdate="true"/>
         <br/>
         <br/>
         <br/>
-        <div class = "text">  <h3>Zaloguj się, by wypożyczyć rower </h3></div>
-        <div  class="centerDiv" style="width: 400px">
+        <div class = "text2">  <h3>Zadaj pytanie </h3></div>
+        <div  class="registration" style="width: 400px">
             <p:panel>
-                <f:facet name="header">Login</f:facet>
+                <f:facet name="header">Kontakt</f:facet>
+
                 <h:panelGrid columns="1">
-                    Email: <h:inputText id="email" value="#{login.email}" required="true" label="Email"/>
-                    <p:message for="email" />
+                    Email: <h:inputText id="email" required="true" label="email"
+                                        style="#{ component.valid ? '' : 'border-color:red;'}"/>
                 </h:panelGrid>
-                    <br/>
-                <h:panelGrid columns="1">
-                    Hasło: <h:inputSecret id="password" value="#{login.password}" required="true" label="Password"/>
-                    <p:message for="password" />
-                </h:panelGrid>
-                <div  class="button" style="width: 400px">
                 <br/>
-                 <br/>
-                 <br/>
-                    <h:commandButton  id="btn" value="Zaloguj się"  action="#{login.authenticate}" class="btn btn-success"/>
+                <h:panelGrid columns="1">
+                    Temat: <h:inputText id="login"  required="true" label="login"
+                                        style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                </h:panelGrid>
+                <br/>
+                <h:panelGrid columns="1">
+                   Wiadomość <h:inputTextarea name="message" rows="10" cols="21" >
+                </h:inputTextarea>
+                </h:panelGrid>
+                <div  class="button2" style="width: 400px">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h:commandButton  id="btn" value="Wyślij wiadomość"  action="#{register.addUser}" class="btn btn-success"/>
                 </div>
-                <div class = "register">  <a href="register.xhtml"> Nie masz konta? Zarejestruj się </a></div>
             </p:panel>
         </div>
     </h:form>
 
 </h:body>
 </html>
-

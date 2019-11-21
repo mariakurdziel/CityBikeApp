@@ -41,8 +41,8 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-2">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.xhtml">Strona główna</a></li>
-                    <li><a href="#">Regulamin</a></li>
-                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="regulamin.xhtml">Regulamin</a></li>
+                    <li><a href="kontakt.xhtml">Kontakt</a></li>
                 </ul>
             </div>
         </div>
@@ -52,7 +52,7 @@
         <br/>
         <br/>
         <br/>
-        <div class = "text">  <h3> Log in to rent a bike </h3></div>
+        <div class = "text">  <h3>Zaloguj się, by wypożyczyć rower </h3></div>
         <div  class="centerDiv" style="width: 400px">
             <p:panel>
                 <f:facet name="header">Login</f:facet>
@@ -62,16 +62,16 @@
                 </h:panelGrid>
                     <br/>
                 <h:panelGrid columns="1">
-                    Password: <h:inputSecret id="password" value="#{login.password}" required="true" label="Password"/>
+                    Hasło: <h:inputSecret id="password" value="#{login.password}" required="true" label="Password"/>
                     <p:message for="password" />
                 </h:panelGrid>
                 <div  class="button" style="width: 400px">
                 <br/>
                  <br/>
                  <br/>
-                    <h:commandButton  id="btn" value="Log in"  action="#{login.authenticate}" class="btn btn-success"/>
+                    <h:commandButton  id="btn" value="Zaloguj się"  action="#{login.authenticate}" class="btn btn-success"/>
                 </div>
-                <div class = "register">  <a href="register.xhtml"> You don't have account? Sign in </a></div>
+                <div class = "register">  <a href="register.xhtml"> Nie masz konta? Zarejestruj się </a></div>
             </p:panel>
         </div>
     </h:form>
