@@ -69,6 +69,8 @@ public class UserDAO {
             foundUser.setPassword(user.getPassword());
             foundUser.setName(user.getName());
             foundUser.setSurname(user.getSurname());
+            foundUser.setIs_paid(user.isIs_paid());
+            foundUser.setAbonament(user.getAbonament());
             em.getTransaction().commit();
         }  catch(Exception e) {
             em.getTransaction().rollback();
@@ -76,7 +78,7 @@ public class UserDAO {
         }
     }
 
-    public static User getUserById(Long id){
+    public static User getUserById(int id){
         System.out.println( em.find(User.class,id));
         return em.find(User.class,id);
     }

@@ -7,6 +7,7 @@
     <groupId>CityBikeApp</groupId>
     <artifactId>CityBikeApp</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
@@ -31,6 +32,11 @@
             <artifactId>primefaces</artifactId>
             <version>6.0</version>
         </dependency>
+        <dependency>
+                <groupId>com.paypal.sdk</groupId>
+                <artifactId>rest-api-sdk</artifactId>
+                <version>1.14.0</version>
+            </dependency>
     </dependencies>
 
     <profiles>
@@ -48,6 +54,14 @@
                         <configuration>
                             <outputDirectory>deployments</outputDirectory>
                             <warName>ROOT</warName>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.5.1</version>
+                        <configuration>
+                            <source>1.7</source>
+                            <target>1.7</target>
                         </configuration>
                     </plugin>
                 </plugins>

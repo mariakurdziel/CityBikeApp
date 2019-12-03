@@ -1,16 +1,18 @@
 package controllers;
 
+import models.Transaction;
 import models.User;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.io.Serializable;
 
-@ManagedBean(name="database")
+@Named("database")
 @RequestScoped
-public class DatabaseBean {
+public class DatabaseBean implements Serializable {
 
     public void createTable() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("CityBikesApp");
@@ -24,16 +26,19 @@ public class DatabaseBean {
            User u4 = new User(224, "szymond@o2.pl","szymond", "tralala", "Szymon", "Drwal");
            User u5 = new User(225, "gabrielac@o2.pl", "gabrielac", "wiktor", "Gabriela", "Ciołek");
 
+           //Transaction t1 = new Transaction(220, 320, "0", "5.0");
+
             em.merge(u1);
             em.merge(u2);
             em.merge(u3);
             em.merge(u4);
             em.merge(u5);
+            //em.merge(t1);
 
             em.getTransaction().commit();
             System.out.println("Zapisano w bazie: " + u1);
             System.out.println("Zapisano w bazie: " + u2);
-
+            //System.out.println("Zapisano w bazie: " + t1);
         }
         catch(Exception e) {
             System.err.println("Blad przy dodawaniu rekordu: " + e);

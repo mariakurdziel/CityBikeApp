@@ -38,15 +38,21 @@ public class LoginBean implements Serializable {
 
         UserDAO userDAO = new UserDAO();
         List <User> users = userDAO.getUsers();
+        boolean is_paid = false;
         boolean found = false;
-
+        PanelBean pb = new PanelBean();
+        pb.setShowOptions(false);
         for(User u: users) {
             if(u.getEmail().equals(this.email) && u.getPassword().equals(this.password)) {
                 found = true;
+                is_paid = u.isIs_paid();
+                pb.setUser(u);
                 break;
             }
         }
         if(found) {
+            pb.setIs_abonament(is_paid);
+            pb.setNot_abonament(!is_paid);
             return "panel.xhtml";
         } else {
             FacesContext facesContext = FacesContext.getCurrentInstance();

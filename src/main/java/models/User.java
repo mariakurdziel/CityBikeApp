@@ -28,6 +28,12 @@ public class User {
     @Column(name="surname",nullable=false)
     private String surname;
 
+    @Column(name="is_paid",nullable=false)
+    private boolean is_paid;
+
+    @Column(name="abonament",nullable=false)
+    private String abonament;
+
     public int getId() {
         return id;
     }
@@ -76,13 +82,23 @@ public class User {
         this.surname = surname;
     }
 
-    public User(int id, String email, String username, String password, String name, String surname ) {
+    public boolean isIs_paid() { return is_paid; }
+
+    public void setIs_paid(boolean is_paid) { this.is_paid = is_paid; }
+
+    public String getAbonament() { return abonament; }
+
+    public void setAbonament(String abonament) { this.abonament = abonament; }
+
+    public User(int id, String email, String username, String password, String name, String surname) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
         this.name  = name;
-        this.surname = username;
+        this.surname = surname;
+        this.is_paid = false;
+        this.abonament = "0";
     }
 
     public User(){}

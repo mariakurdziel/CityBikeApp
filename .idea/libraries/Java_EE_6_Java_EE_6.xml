@@ -8,6 +8,9 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.resource.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.ejb.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../paypal/rest-api-sdk-1.14.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../paypal/gson-2.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../paypal/slf4j-api-1.7.21.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
