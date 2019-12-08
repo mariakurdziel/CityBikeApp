@@ -2,6 +2,7 @@ package paypal;
 
 
 import com.paypal.base.rest.PayPalRESTException;
+import controllers.PanelBean;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ public class AuthorizePaymentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String product = request.getParameter("product");
-        String subtotal = "70.0";
+        String subtotal = new PanelBean().getAbonament()+".0";
         String shipping = "0.0";
         String tax = "0.0";
         String total = request.getParameter("total");

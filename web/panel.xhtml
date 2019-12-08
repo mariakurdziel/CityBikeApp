@@ -48,9 +48,6 @@
         </div>
     </nav>
     <h:form>
-        <h:panelGroup rendered="#{panel.is_abonament}">
-            <p>Masz abonament</p>
-        </h:panelGroup>
         <h:panelGroup rendered="#{panel.not_abonament}">
             <br/>
             <h3 class="text">Nie masz jeszcze abonamentu. Kup teraz</h3>
@@ -61,7 +58,29 @@
             <br/>
         </h:panelGroup>
         <h:panelGroup rendered="#{panel.is_abonament}">
-            <h:outputText value = "Twój abonament:" />
+        <h:panelGroup rendered="#{panel.not_bike}">
+            <div align="center">
+            <br/>
+                <h3>Wypożycz rower</h3>
+                <br/> <br/>
+                <h4>Twój abonament: #{panel.user.abonament}</h4>
+                <br/> <br/>
+                <h:commandButton value="Wypożycz teraz"  action="rentbike" class="btn btn-success"/>
+            </div>
+        </h:panelGroup>
+            <h:panelGroup rendered="#{panel.is_bike}">
+                <div align="center">
+                <br/>
+                <h3>Wypożyczyłeś rower</h3>
+                <br/> <br/>
+                <h4>Twój abonament: #{panel.user.abonament}</h4>
+                <br/>
+                <h4>Twój rower: #{panel.bike.bake_id}</h4>
+                <br/> <br/>
+                <br/> <br/>
+                <h:commandButton value="Zwróć rower"  action="#{panel.returnBike}" class="btn btn-success"/>
+                </div>
+            </h:panelGroup>
         </h:panelGroup>
         <br/><br/><br/>
         <h:panelGroup rendered="#{panel.showOptions}">
@@ -76,7 +95,7 @@
                 <br/>
             <div align = "center">
                 <br/><br/><br/>
-                <h:commandButton id="btn5" value="Zapłać z PayPal" action="#{panel.buyAbonament}" class="btn btn-success" style="float:center" />
+                <h:commandButton id="btn5" value="Zapłać z PayPal" action="checkout" class="btn btn-success" style="float:center" />
             </div>
         </h:panelGroup>
     </h:form>

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "transactions")
@@ -16,11 +17,9 @@ public class Transaction {
     @Column(name="bike_id",nullable=false)
     private int bike_id;
 
-    @Column(name="hours",nullable=false)
-    private String number_of_hours;
+    @Column(name="date",nullable=false)
+    private Date date;
 
-    @Column (name="price", nullable=false)
-    private String price;
 
     public int getId() {
         return id;
@@ -46,26 +45,20 @@ public class Transaction {
         this.bike_id = bike_id;
     }
 
-    public String getNumber_of_hours() {
-        return number_of_hours;
+    public Date getDate() {
+        return date;
     }
 
-    public void setNumber_of_hours(String number_of_hours) {
-        this.number_of_hours = number_of_hours;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public Transaction(int user_id, int bike_id, String number_of_hours, String price) {
+    public Transaction(int user_id, int bike_id, Date date) {
         this.user_id = user_id;
         this.bike_id = bike_id;
-        this.number_of_hours = number_of_hours;
-        this.price = price;
+        this.date = date;
+    }
+
+    public Transaction() {
     }
 }

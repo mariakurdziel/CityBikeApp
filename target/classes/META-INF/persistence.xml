@@ -5,6 +5,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:jboss/datasources/PostgresDS</jta-data-source>
         <class>models.User</class>
+        <class>models.Transaction</class>
+        <class>models.Bike</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/city_bikes_app"/>
             <property name="hibernate.connection.username" value="postgres"/>

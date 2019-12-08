@@ -8,8 +8,8 @@ import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
 
 public class PaymentServices {
-    private static final String CLIENT_ID = "xxx";
-    private static final String CLIENT_SECRET = "xxx";
+    private static final String CLIENT_ID = "AUIZtbdHvz3oN19NTSV5-Gljg-bcVY2o9Wv8vaLv-jvA-STIkxEoQ2O5yyuccPMHJdV0GoALkK4AVhf6";
+    private static final String CLIENT_SECRET = "EF3ToX9GCepHv79wEO_wQ0r2OPKhPxu1WOmOGG75VEX-qtoYcWaFsfQV4ErTzo8uapLMiQq7mJrnUxIF";
     private static final String MODE = "sandbox";
 
     public String authorizePayment(OrderDetail orderDetail)
@@ -61,7 +61,7 @@ public class PaymentServices {
         details.setTax(orderDetail.getTax());
 
         Amount amount = new Amount();
-        amount.setCurrency("USD");
+        amount.setCurrency("EUR");
         amount.setTotal(orderDetail.getTotal());
         amount.setDetails(details);
 
@@ -73,7 +73,7 @@ public class PaymentServices {
         List<Item> items = new ArrayList<Item>();
 
         Item item = new Item();
-        item.setCurrency("USD");
+        item.setCurrency("EUR");
         item.setName(orderDetail.getProductName());
         item.setPrice(orderDetail.getSubtotal());
         item.setTax(orderDetail.getTax());

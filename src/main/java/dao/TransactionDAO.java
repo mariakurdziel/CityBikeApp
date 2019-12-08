@@ -67,8 +67,7 @@ public class TransactionDAO {
             em.getTransaction().begin();
             foundTransaction.setUser_id(transaction.getUser_id());
             foundTransaction.setBike_id(transaction.getBike_id());
-            foundTransaction.setNumber_of_hours(transaction.getNumber_of_hours());
-            foundTransaction.setPrice(transaction.getPrice());
+            foundTransaction.setDate(transaction.getDate());
             em.getTransaction().commit();
         }  catch(Exception e) {
             em.getTransaction().rollback();

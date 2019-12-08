@@ -7,6 +7,7 @@ import javax.servlet.http.*;
 
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.PayPalRESTException;
+import controllers.PanelBean;
 
 
 @WebServlet("/review_payment")
@@ -33,6 +34,7 @@ public class ReviewPaymentServlet extends HttpServlet {
             request.setAttribute("transaction", transaction);
             request.setAttribute("shippingAddress", shippingAddress);
 
+            new PanelBean().buyAbonament();
             String url = "review.jsp?paymentId=" + paymentId + "&PayerID=" + payerId;
 
             request.getRequestDispatcher(url).forward(request, response);

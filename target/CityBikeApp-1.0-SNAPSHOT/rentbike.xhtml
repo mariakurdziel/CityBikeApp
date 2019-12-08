@@ -21,28 +21,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/googlecode.min.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-        th {
-            background-color:green;
-            Color:white;
-        }
-        th, td {
-            width:150px;
-            text-align:center;
-            padding:5px
-
-        }
-        .gfg {
-            border-collapse:separate;
-            border-spacing:0 40px;
-        }
-    </style>
 </h:head>
 <h:body>
     <p:growl id="msgs" showDetail="true" />
+    <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -65,29 +47,44 @@
             </div>
         </div>
     </nav>
-    <br/>
-    <h3 class="text"> Podsumowanie </h3>
-    <form action="authorize_payment" method="post">
-        <div align = "center">
-        <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
-        <div class = "gfg" >
-        <table cellspacing="10">
-            <tr>
-                <td>Abonament: </td>
-                <td><input type="text" name="product" value="#{panel.type}" /></td>
-            </tr>
-            <tr>
-                <td>Cena: </td>
-                <td><input type="text" name="total" value="#{panel.abonament}" /></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <h:commandButton  id="btn" value="Checkout" class="btn btn-success"/>
-                </td>
-            </tr>
-        </table>
-        </div>
-        </div>
-    </form>
+
+    <h:form>
+        <br/>
+        <div class = "text">  <h3> Wybierz ulicę </h3></div>
+        <br/><br/>
+        <div  align="center">
+            <h:panelGrid columns="3" style="margin-bottom:30px" cellpadding="5">
+            <h:selectOneMenu value="#{bike.street}" style="width:125px">
+                <f:selectItem itemLabel="Wybierz ulicę" itemValue="Wybierz" />
+                <f:selectItem itemLabel="Czarnowiejska 17" itemValue="Czarnowiejska 17" />
+                <f:selectItem itemLabel="Grunwaldzka 12" itemValue="Grunwaldzka 12" />
+                <f:selectItem itemLabel="Armii Krajowej 9" itemValue="Armii Krajowej 9" />
+                <f:selectItem itemLabel="Pawia 9" itemValue="Pawia 9" />
+            </h:selectOneMenu>
+            </h:panelGrid>
+            <h:commandButton id="btn" value="Szukaj"  action="#{bike.getBikes}" class="btn btn-success"/>
+             </div>
+        <br/>
+        <h:panelGroup styleClass="centerDiv" rendered="#{bike.showBikes}">
+            <br/><br/><br/>
+            <p:dataTable var="elem" value="#{bike.street_bikes}">
+                <p:column headerText="Id">
+                    <div align="center">
+                    <h:outputText value="#{elem.bake_id}" />
+                    </div>
+                </p:column>
+                <p:column headerText="Wypożycz">
+                    <div align="center">
+                    <h:commandButton value="Wybierz"  action="#{bike.rentBike(elem)}" class="btn btn-success"/>
+                </div>
+                </p:column>
+            </p:dataTable>
+            <br/>
+            <div align="center">
+                <h:commandButton value="Wróć do panelu"  action="panel.xhtml" class="btn btn-success"/>
+            </div>
+        </h:panelGroup>
+    </h:form>
+
 </h:body>
 </html>

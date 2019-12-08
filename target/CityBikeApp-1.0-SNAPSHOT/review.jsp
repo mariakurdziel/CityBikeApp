@@ -12,6 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Review</title>
+    <link href="resources/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/index.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         table { border: 0; }
         table td { padding: 5px; }
@@ -19,7 +21,9 @@
 </head>
 <body>
 <div align="center">
-    <h1>Please Review Before Paying</h1>
+    <br/>
+    <h3 class="text">Please Review Before Paying</h3>
+    <br/>
     <form action="execute_payment" method="post">
         <table>
             <tr>
@@ -95,7 +99,7 @@
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Pay Now" />
+                    <input type="submit" value="Pay Now" class="btn btn-success"/>
                 </td>
             </tr>
         </table>

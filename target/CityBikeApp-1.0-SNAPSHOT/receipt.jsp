@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: maria
-  Date: 02.12.2019
-  Time: 20:33
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,14 +11,15 @@
     </style>
 </head>
 <body>
+<form action="panel.xhtml">
 <div align="center">
     <h1>Payment Done. Thank you for purchasing our products</h1>
     <br/>
     <h2>Receipt Details:</h2>
     <table>
         <tr>
-            <td><b>Usługodawca</b></td>
-            <td>City Bike z.o.o</td>
+            <td><b>Merchant:</b></td>
+            <td>Company ABC Ltd.</td>
         </tr>
         <tr>
             <td><b>Payer:</b></td>
@@ -52,6 +46,9 @@
             <td>${transaction.amount.total} USD</td>
         </tr>
     </table>
+    <br/><br/>
+    <input type="submit" value="Przejdź do panelu głównego" />
 </div>
+</form>
 </body>
 </html>
