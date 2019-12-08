@@ -6,6 +6,8 @@ import models.Bike;
 import models.User;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 
@@ -23,6 +25,10 @@ public class PanelBean implements Serializable {
     private static String abonament;
     private static String type;
     private static Bike bike;
+    private static int sec;
+    private static int min=60;
+    private static String time;
+    private static double debt=0;
 
     public static int getUser_id() {
         return user_id;
@@ -76,6 +82,38 @@ public class PanelBean implements Serializable {
         PanelBean.abonament = abonament;
     }
 
+    public int getSec() {
+        return sec;
+    }
+
+    public void setSec(int sec) {
+        PanelBean.sec = sec;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        PanelBean.min = min;
+    }
+
+    public double getDebt() {
+        return debt;
+    }
+
+    public void setDebt(double debt) {
+        PanelBean.debt = debt;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        PanelBean.time = time;
+    }
+
     public boolean isIs_bike() {
         return is_bike;
     }
@@ -119,8 +157,39 @@ public class PanelBean implements Serializable {
     public void returnBike() {
         bike.setIs_free(true);
         BikeDAO.updateBike(bike);
+        debt = min*0.1;
+
+        if(min>60) {
+            debt+=(min-60)*0.5;
+        }
+        Double old_abonament=Double.parseDouble(user.getAbonament());
+        String abonament = new Double(old_abonament-debt).toString();
+        user.setAbonament(abonament);
+        UserDAO.updateUser(user);
         is_bike = false;
         not_bike = true;
+        min=0;
+        sec=0;
+        time="";
+    }
+
+    public void increment() {
+
+        sec++;
+
+       if(sec%60==0 && sec!=0) {
+
+           if(min>60) {
+               FacesContext facesContext = FacesContext.getCurrentInstance();
+               FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Uwaga!","Przekroczono czas użytkowania");
+               facesContext.addMessage("warning", facesMessage);
+           }
+            sec=0;
+            min++;
+        }
+
+
+        time = new Integer(min).toString()+" min "+new Integer(sec).toString()+ " sec";
     }
 
     public void buyAbonament() {

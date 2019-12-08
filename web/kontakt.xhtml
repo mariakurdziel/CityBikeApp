@@ -23,7 +23,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
 </h:head>
 <h:body>
-    <p:growl autoUpdate="true"/>
+    <p:growl id="msgs" showDetail="true" />
     <!-- Second navbar for sign in -->
     <nav class="navbar navbar-default">
         <div class="container">
@@ -40,53 +40,48 @@
 
             <div class="collapse navbar-collapse" id="navbar-collapse-2">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.xhtml">Strona główna</a></li>
-                    <li><a href="#">Regulamin</a></li>
-                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="panel.xhtml">Panel Główny</a></li>
+                    <li><a href="kontakt.xhtml">Kontakt</a></li>
+                    <li><a href="transactions.xhtml">Historia transakcji</a></li>
+                    <li><a href="index.xhtml">Wyloguj się</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <h:form>
-        <br/>
-        <div class = "text">  <h3> Sign in to rent a bike </h3></div>
-        <br/>
-        <br/>
-        <div  align ="center">
-            <p:panel>
-                <h:panelGrid>
-                    Email: <h:inputText id="email" value="#{register.email}" required="true" label="email"
-                                        style="#{ component.valid ? '' : 'border-color:red;'}"/>
-                </h:panelGrid>
-                <br/>
-                <h:panelGrid>
-                    Login <h:inputText id="login" value="#{register.username}" required="true" label="login"
+        <h:form>
+            <p:growl autoUpdate="true"/>
+            <br/>
+            <div class = "text">  <h3>Zadaj nam pytanie</h3></div>
+            <br/>
+            <br/>
+            <div  align ="center">
+                <h:selectOneMenu value="#{contact.type_of_problem}" style="width:125px">
+                    <f:selectItem itemLabel="Wybierz rodzaj problemu" itemValue="Wybierz" />
+                    <f:selectItem itemLabel="Wada roweru" itemValue="Wada roweru" />
+                    <f:selectItem itemLabel="Niepoprawne naliczenie opłat" itemValue="Złe naliczenie opłat" />
+                    <f:selectItem itemLabel="Inne" itemValue="Inne" />
+                </h:selectOneMenu>
+                <br/> <br/>
+                    <h:panelGrid>
+                        Temat: <h:inputText id="topic" value="#{contact.topic}" required="true" label="surname"
                                              style="#{ component.valid ? '' : 'border-color:red;'}"/>
-                </h:panelGrid>
-                <br/>
-                <h:panelGrid columns="1">
-                    Password: <h:inputSecret id="password" value="#{register.password}" required="true" label="password"
-                                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
-                </h:panelGrid>
-                <br/>
-                <h:panelGrid>
-                    Name: <h:inputText id="name" value="#{register.name}" required="true" label="name"
-                                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
-                </h:panelGrid>
-                <br/>
-                <h:panelGrid>
-                    Surname: <h:inputText id="surname" value="#{register.surname}" required="true" label="surname"
-                                         style="#{ component.valid ? '' : 'border-color:red;'}"/>
-                </h:panelGrid>
-                <br/>
-            </p:panel>
-        <div align = "center">
-            <br/><br/>
-            <h:commandButton id="btn" value="Sign in"  action="#{register.addUser}" class="btn btn-success" />
-        </div>
-        </div>
-    </h:form>
+                    </h:panelGrid>
+                    <h:panelGrid>
+                        Wiadomość: <h:inputTextarea id="msg" rows="10" cols="22" value="#{contact.msg}" required="true" label="name"
+                                           style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                    </h:panelGrid>
+                    <br/>
+                    <h:panelGrid>
+                        Podpis: <h:inputText id="sign" value="#{contact.sign}" required="true" label="surname"
+                                              style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                    </h:panelGrid>
+                    <br/>
+                <div align = "center">
+                    <br/>
+                    <h:commandButton id="btn" value="Wyślij wiadomośc i przejdź do panelu głównego"  action="#{contact.sendMessage}" class="btn btn-success" />
+                </div>
+            </div>
+        </h:form>
 
 </h:body>
 </html>

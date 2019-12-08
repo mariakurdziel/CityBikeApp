@@ -40,14 +40,15 @@
 
             <div class="collapse navbar-collapse" id="navbar-collapse-2">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.xhtml">Twoje konto</a></li>
-                    <li><a href="#">Historia transakcji</a></li>
+                    <li><a href="kontakt.xhtml">Kontakt</a></li>
+                    <li><a href="transactions.xhtml">Historia transakcji</a></li>
                     <li><a href="index.xhtml">Wyloguj się</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <h:form>
+        <p:growl autoUpdate="true"/>
         <h:panelGroup rendered="#{panel.not_abonament}">
             <br/>
             <h3 class="text">Nie masz jeszcze abonamentu. Kup teraz</h3>
@@ -77,6 +78,9 @@
                 <br/>
                 <h4>Twój rower: #{panel.bike.bake_id}</h4>
                 <br/> <br/>
+                    <h4 id="warning">Czas wypożyczenia:</h4>
+                    <h:outputText id="txt_count" value="#{panel.time}" />
+                    <p:poll interval="1" listener="#{panel.increment}" update="txt_count" />
                 <br/> <br/>
                 <h:commandButton value="Zwróć rower"  action="#{panel.returnBike}" class="btn btn-success"/>
                 </div>

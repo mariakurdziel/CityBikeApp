@@ -67,6 +67,8 @@ public class LoginBean implements Serializable {
         boolean is_paid = false;
         boolean found = false;
         PanelBean pb = new PanelBean();
+        TransactionsBean tr = new TransactionsBean();
+        tr.setViewTransactions(false);
         pb.setShowOptions(false);
         for(User u: users) {
             if(u.getEmail().equals(this.email) && u.getPassword().equals(this.password)) {

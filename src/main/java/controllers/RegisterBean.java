@@ -4,6 +4,8 @@ import dao.UserDAO;
 import models.User;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -65,6 +67,9 @@ public class RegisterBean implements Serializable {
         int id = new Integer(lUUID.substring(0,3));
         User user = new User(id, this.email, this.username, this.password, this.name, this.surname);
         new UserDAO().addUser(user);
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dodano użytkownika","Użytkownik dodany");
+        facesContext.addMessage("register", facesMessage);
         return "index.xhtml";
     }
 }
