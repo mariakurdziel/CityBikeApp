@@ -26,7 +26,6 @@ public class ExecutePaymentServlet extends HttpServlet {
 
             PayerInfo payerInfo = payment.getPayer().getPayerInfo();
             Transaction transaction = payment.getTransactions().get(0);
-
             request.setAttribute("payer", payerInfo);
             request.setAttribute("transaction", transaction);
 

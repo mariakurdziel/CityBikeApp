@@ -26,7 +26,7 @@ public class PanelBean implements Serializable {
     private static String type;
     private static Bike bike;
     private static int sec;
-    private static int min=60;
+    private static int min=0;
     private static String time;
     private static double debt=0;
 
@@ -178,14 +178,13 @@ public class PanelBean implements Serializable {
         sec++;
 
        if(sec%60==0 && sec!=0) {
-
-           if(min>60) {
-               FacesContext facesContext = FacesContext.getCurrentInstance();
-               FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Uwaga!","Przekroczono czas użytkowania");
-               facesContext.addMessage("warning", facesMessage);
-           }
             sec=0;
             min++;
+        }
+        if(min>58 && sec==1) {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_WARN, "Przekroczyłes czas użytkowania!", "Przekroczono czas użytkowania");
+            facesContext.addMessage("warning", facesMessage);
         }
 
 
